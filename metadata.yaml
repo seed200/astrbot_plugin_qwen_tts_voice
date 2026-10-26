@@ -1,0 +1,14 @@
+name: "astrbot_plugin_qwen_tts_voice"
+display_name: "Qwen 3 TTS 语音"
+desc: "用本机 Qwen 3 TTS 克隆参考音色，每隔 N 条回复发送一条语音。"
+version: "v1.0.0"
+author: "seed200"
+repo: "https://github.com/seed200/astrbot_plugin_qwen_tts_voice"
+astrbot_version: ">=4.24.0"
+support_platforms:
+  - aiocqhttp
+tags:
+  - TTS
+  - 语音
+  - Qwen
+  - 音色克隆

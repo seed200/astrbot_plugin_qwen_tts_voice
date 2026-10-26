@@ -1,0 +1,100 @@
+{
+  "enabled": {
+    "description": "启用语音回复",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后所有回复都保持文字。"
+  },
+  "api_base": {
+    "description": "Qwen TTS API 地址",
+    "type": "string",
+    "default": "http://127.0.0.1:7860",
+    "hint": "Qwen TTS WebUI 的地址。必须使用带 --api 启动的实例，接口是 /v1/audio/speech。"
+  },
+  "api_key": {
+    "description": "API Key",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "Qwen TTS 启动时如果设置了 --api-key 或 QWEN_TTS_API_KEY，这里填同一个值；否则留空。"
+  },
+  "model": {
+    "description": "TTS 模型",
+    "type": "string",
+    "default": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "options": [
+      "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+      "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+    ],
+    "hint": "声音克隆使用 Base 模型。0.6B 更快、显存占用更低；1.7B 音质更好但更慢。"
+  },
+  "language": {
+    "description": "语言",
+    "type": "string",
+    "default": "auto",
+    "hint": "一般保持 auto 自动识别。"
+  },
+  "reference_audio_dir": {
+    "description": "参考语音存放目录",
+    "type": "string",
+    "default": "",
+    "hint": "填写参考音频所在目录的绝对路径，例如 Windows 的 D:\\\\tts_refs；支持 wav / mp3 / flac / ogg / m4a。"
+  },
+  "reference_audio_file": {
+    "description": "参考语音文件名",
+    "type": "string",
+    "default": "",
+    "hint": "填参考语音目录下的文件名，例如 my_voice.wav；也可以直接填绝对路径。"
+  },
+  "ref_text": {
+    "description": "参考语音对应文字",
+    "type": "text",
+    "default": "",
+    "hint": "参考音频里实际说的内容。留空时 Qwen 只使用说话人特征进行克隆。"
+  },
+  "voice_every_n": {
+    "description": "每多少条回复发一条语音",
+    "type": "int",
+    "default": 5,
+    "slider": {
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "hint": "例如 5 表示第 5、10、15……条回复发语音；0 表示关闭语音。"
+  },
+  "send_text_too": {
+    "description": "语音时同时发送文字",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭时只发语音；开启时语音后面再跟一条文字。"
+  },
+  "response_format": {
+    "description": "音频格式",
+    "type": "string",
+    "default": "wav",
+    "options": [
+      "wav",
+      "mp3"
+    ],
+    "hint": "wav 兼容性好；mp3 文件更小。QQ 语音实际发送时会由适配器转换。"
+  },
+  "max_text_chars": {
+    "description": "语音最大文字长度",
+    "type": "int",
+    "default": 200,
+    "hint": "超过这个长度的回复不转语音，避免生成太慢。"
+  },
+  "timeout_seconds": {
+    "description": "TTS 超时时间（秒）",
+    "type": "int",
+    "default": 180,
+    "hint": "首次加载模型会比较慢，建议不要低于 120 秒。"
+  },
+  "speed": {
+    "description": "语速",
+    "type": "float",
+    "default": 1.0,
+    "hint": "0.25 ~ 4.0，通常保持 1.0。"
+  }
+}
